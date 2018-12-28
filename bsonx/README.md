@@ -10,19 +10,19 @@
 
 // case 1
 filter := bson.D{{
-	"status",
-	bson.D{{
-		"$in",
-		bson.A{StatusNew, StatusRenew},
-	}},
+    "status",
+    bson.D{{
+        "$in",
+        bson.A{StatusNew, StatusRenew},
+    }},
 }}
 err := c.FindOne(ctx, filter).Decode(&msg)
 
 // case 2
 filter := bson.D{{"sign", msg.Sign}}
 update := bson.D{
-	{"$set", bson.D{{"status", status}}},
-	{"$inc", bson.D{{"err_count", 1}}},
+    {"$set", bson.D{{"status", status}}},
+    {"$inc", bson.D{{"err_count", 1}}},
 }
 _, err := c.UpdateOne(ctx, filter, update)
 ```
@@ -33,9 +33,9 @@ _, err := c.UpdateOne(ctx, filter, update)
 
 // case 1
 filter := bsonx.ToBson(zo.Map{
-	"status": zo.Map{
-		"$in": []int{StatusNew, StatusRenew},
-	},
+    "status": zo.Map{
+        "$in": []int{StatusNew, StatusRenew},
+    },
 })
 err := c.FindOne(ctx, filter).Decode(&msg)
 
@@ -43,7 +43,7 @@ err := c.FindOne(ctx, filter).Decode(&msg)
 filter := bsonx.ToBson(zo.Map{"sign": msg.Sign})
 update := bsonx.ToBson(zo.Map{
     "$set": zo.Map{"status": status},
-	"$inc": zo.Map{"err_count": 1},
+    "$inc": zo.Map{"err_count": 1},
 })
 _, err := c.UpdateOne(ctx, filter, update)
 ```
