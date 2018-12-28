@@ -32,7 +32,7 @@ _, err := c.UpdateOne(ctx, filter, update)
 ``` go
 
 // case 1
-filter := bsonx.ToBson(zo.Map{
+filter := bsonx.D(zo.Map{
     "status": zo.Map{
         "$in": []int{StatusNew, StatusRenew},
     },
@@ -40,8 +40,8 @@ filter := bsonx.ToBson(zo.Map{
 err := c.FindOne(ctx, filter).Decode(&msg)
 
 // case 2
-filter := bsonx.ToBson(zo.Map{"sign": msg.Sign})
-update := bsonx.ToBson(zo.Map{
+filter := bsonx.D(zo.Map{"sign": msg.Sign})
+update := bsonx.D(zo.Map{
     "$set": zo.Map{"status": status},
     "$inc": zo.Map{"err_count": 1},
 })
