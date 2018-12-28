@@ -11,8 +11,8 @@ import (
 // ErrConvertType indicate a convert error
 var ErrConvertType = "error convert type"
 
-// ToBson convert map[string]interface{} to bson.D type
-func ToBson(data zo.Map) bson.D {
+// D convert map[string]interface{} to bson.D type
+func D(data zo.Map) bson.D {
 	result := bson.D{}
 
 	for key, value := range data {
@@ -23,7 +23,7 @@ func ToBson(data zo.Map) bson.D {
 				panic(ErrConvertType)
 			}
 
-			result = append(result, primitive.E{Key: key, Value: ToBson(valueMap)})
+			result = append(result, primitive.E{Key: key, Value: D(valueMap)})
 		case types.Slice:
 			valueSlice, ok := value.([]zo.Any)
 			if !ok {
@@ -49,7 +49,7 @@ func sliceToArray(data []zo.Any) bson.A {
 				panic(ErrConvertType)
 			}
 
-			result = append(result, ToBson(itemMap))
+			result = append(result, D(itemMap))
 		case types.Slice:
 			itemSlice, ok := item.([]zo.Any)
 			if !ok {
