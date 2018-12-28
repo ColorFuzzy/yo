@@ -8,6 +8,7 @@ import (
 	"github.com/mongodb/mongo-go-driver/bson/primitive"
 )
 
+// ErrConvertType indicate a convert error
 var ErrConvertType = "error convert type"
 
 // ToBson convert map[string]interface{} to bson.D type
