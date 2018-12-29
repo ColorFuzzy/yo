@@ -1,4 +1,4 @@
-# zo
+# yo
 
 A library make golang usage deadly simple ~
 
