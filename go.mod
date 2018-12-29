@@ -1,4 +1,4 @@
-module github.com/colorfuzzy/zo
+module github.com/colorfuzzy/yo
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

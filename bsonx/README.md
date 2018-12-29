@@ -4,7 +4,7 @@
 
 `bsonx.ToBson` convert `map[string]interface{}` to `bson.D`.
 
-## Before zo
+## Before yo
 
 ``` go
 
@@ -32,18 +32,18 @@ _, err := c.UpdateOne(ctx, filter, update)
 ``` go
 
 // case 1
-filter := bsonx.D(zo.Map{
-    "status": zo.Map{
+filter := bsonx.D(yo.M{
+    "status": yo.M{
         "$in": []int{StatusNew, StatusRenew},
     },
 })
 err := c.FindOne(ctx, filter).Decode(&msg)
 
 // case 2
-filter := bsonx.D(zo.Map{"sign": msg.Sign})
-update := bsonx.D(zo.Map{
-    "$set": zo.Map{"status": status},
-    "$inc": zo.Map{"err_count": 1},
+filter := bsonx.D(yo.M{"sign": msg.Sign})
+update := bsonx.D(yo.M{
+    "$set": yo.M{"status": status},
+    "$inc": yo.M{"err_count": 1},
 })
 _, err := c.UpdateOne(ctx, filter, update)
 ```
