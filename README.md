@@ -6,9 +6,9 @@ A library make golang usage deadly simple ~
 
 ``` go
 
-// zo.Any is an alias to interface{}
+// yo.Any is an alias to interface{}
 
-// zo.Map is an alias to map[string]interface{}
+// yo.M is an alias to map[string]interface{}
 ```
 
 ## bson.D utils
